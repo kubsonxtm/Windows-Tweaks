@@ -1,0 +1,3 @@
+https://github.com/Orbmu2k/nvidiaProfileInspector/releases
+EN import to global profile
+PL importuj do globalnego profilu
