@@ -1,0 +1,6 @@
+Settings
+XMP --> ON
+Armoury Crate install --> False (for ASUS motherboard)
+Erp --> S5
+C-states --> Off
+Intel(VMX) Virtualization --> Off
