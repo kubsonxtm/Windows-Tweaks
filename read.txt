@@ -1,2 +1,0 @@
-EN without it you can't run some scripts that can possibly speed up your computer.
-PL bez tego nie możesz uruchomić niektórych skryptów które ewentualnie mogą przyspieszyć twój komputer.
