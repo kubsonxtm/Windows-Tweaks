@@ -17,12 +17,12 @@
   Windows 10 & 11
 </p>
 
-<p align="center">
-  <a href="https://www.virustotal.com" target="_blank">
-    <img src="https://www.virustotal.com/images/logos/virustotal_logo.svg" alt="VirusTotal" width="200">
-  </a>
-</p>
+[![Virustotal](https://store-images.s-microsoft.com/image/apps.38589.13988821287716003.a94a0249-6958-4773-a899-618ac4ac17e2.464fdfa5-195f-43d7-9215-c7b41cc01ded)](https://www.virustotal.com/gui/file/a821d9f787193fa3a0b058a2e4de387b04103141ace769e065b5aba8501799ae?nocache=1)
+
+
 
 </body>
 </html>
-![VirusTotal_logo svg](https://github.com/user-attachments/assets/4192feab-5628-4a4f-b641-06c7647eeb57)
+
+
+
