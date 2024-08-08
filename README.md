@@ -18,10 +18,11 @@
 </p>
 
 <p align="center">
-  <a href="https://www.virustotal.com/gui/file/a821d9f787193fa3a0b058a2e4de387b04103141ace769e065b5aba8501799ae?nocache=1" target="_blank">
-    <img src="https://softlist.pl/upload/resize_cache/iblock/172/7c6mzdai99gso9cj1e9do8utk54lp3oq/219_219_140cd750bba9870f18aada2478b24840a/VirusTotal-Intelligence.png" alt="VirusTotal" width="200">
+  <a href="https://www.virustotal.com" target="_blank">
+    <img src="https://www.virustotal.com/images/logos/virustotal_logo.svg" alt="VirusTotal" width="200">
   </a>
 </p>
 
 </body>
 </html>
+![VirusTotal_logo svg](https://github.com/user-attachments/assets/4192feab-5628-4a4f-b641-06c7647eeb57)
