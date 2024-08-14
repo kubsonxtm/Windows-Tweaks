@@ -1,0 +1,22 @@
+EN
+Minimum number of processor performance cores when holding cores - 100%
+Processor idle downgrade threshold - 100%
+Disable processor idle state - Enable idle
+Threshold for increasing processor idle level - 100%
+Minimum processor state - 100%
+System cooling policy - Active
+Maximum processor state - 100%
+---------------------------------------------------------------------------
+PL
+Minimalna liczba rdzeni wydajności procesora przy wstrzymywaniu rdzeni - 100%
+Próg obniżenia  poziomu bezczynności procesora - 100%
+Wyłączenie stanu bezczynności procesora - Włącz bezczynność
+Próg podwyższenia poziomu bezczynności procesora - 100%
+Minimalny stan procesora - 100%
+Zasady chłodzenia systemu - Aktywne
+Maksymalny stan procesora - 100%
+
+
+
+
+I don't know if this will be translated well so I apologize for any mistakes ;c
