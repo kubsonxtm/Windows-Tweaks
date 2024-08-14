@@ -404,3 +404,16 @@ Windows Registry Editor Version 5.00
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 
 
+
+
+; Windows Search
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
+"Start"=dword:00000004
+
+; Printing
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler]
+"Start"=dword:00000004
+
+; SysMain
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]
+"Start"=dword:00000004
