@@ -1,1 +1,0 @@
-UninstallTool.exe /uninstall_service
