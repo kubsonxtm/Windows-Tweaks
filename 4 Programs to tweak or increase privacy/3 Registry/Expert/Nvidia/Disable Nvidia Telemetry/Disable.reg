@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+; NVIDIA TELEMETRY SERVICE DISABLE
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NvTelemetryContainer]
+"Start"=dword:00000004
