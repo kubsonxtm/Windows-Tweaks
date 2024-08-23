@@ -1,6 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; DISABLE FIREFOX TELEMETRY
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox]
-"DisableTelemetry"=dword:00000001
-"DisableDefaultBrowserAgent"=dword:00000001
