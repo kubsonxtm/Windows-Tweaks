@@ -76,24 +76,6 @@ Windows Registry Editor Version 5.00
 
 
 
-; CHROME TWEAKS
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
-"StartupBoostEnabled"=dword:00000000
-"HardwareAccelerationModeEnabled"=dword:00000000
-"BackgroundModeEnabled"=dword:00000000
-"HighEfficiencyModeEnabled"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GoogleChromeElevationService]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem]
-"Start"=dword:00000004
-
-
-
 ; PERFORMANCE TWEAKS
 ; unpark cpu cores 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583]
