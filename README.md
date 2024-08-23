@@ -7,7 +7,8 @@
 <p align="center" style="margin-top: 0; margin-bottom: 0;">
   <strong>Requirements:</strong><br>
   - Internet access<br>
-  - Windows 10/11
+  - Windows 10/11<br>
+  - Run every tweak as admin (if possible)
 </p>
 
 <div align="center" style="margin: 0; padding: 0;">
