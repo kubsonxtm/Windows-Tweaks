@@ -771,9 +771,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings]
 "DisableSendGenericDriverNotFoundToWER"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SYSTEM\DriverDatabase\Policies\Settings]
-"DisableSendGenericDriverNotFoundToWER"=dword:00000001
-
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
 "ConfigureWindowsSpotlight"=dword:00000002
 "DisableThirdPartySuggestions"=dword:00000001
@@ -914,8 +911,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\SYSTEM\DriverDatabase\Policies\Settings]
-"DisableSendGenericDriverNotFoundToWER"=dword:00000001
-
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001
+
