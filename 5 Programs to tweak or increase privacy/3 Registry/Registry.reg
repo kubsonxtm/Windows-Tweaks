@@ -118,10 +118,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
 "PowerThrottlingOff"=dword:00000001
 
-; disable hibernate
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
 "HibernateEnabled"=dword:00000000
 "HibernateEnabledDefault"=dword:00000000
+"SleepReliabilityDetailedDiagnostics"=dword:00000000
 
 ; disable fast boot
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
