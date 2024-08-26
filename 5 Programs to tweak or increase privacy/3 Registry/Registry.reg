@@ -126,6 +126,7 @@ Windows Registry Editor Version 5.00
 ; disable fast boot
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
 "HiberbootEnabled"=dword:00000000
+"SleepStudyDisabled"=dword:00000001
 
 ; disable background apps
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
