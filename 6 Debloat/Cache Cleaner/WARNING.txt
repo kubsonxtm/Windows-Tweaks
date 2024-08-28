@@ -1,0 +1,10 @@
+If you are currently using a browser:
+Firefox 
+Google Chrome
+then turn it off so you don't lose data once the cleanup is finished you can turn it back on.
+------------------------------------------
+If you use Edge - do not use cleaner because it removes files for the proper functioning of the edge.
+If you use OneDrive - do not use cleaner because it removes files for the proper functioning of onedrive.
+If you use System Restore - do not use cleaner because it deletes system restore files.
+
+AND MOST IMPORTANT YOU DO IT ON YOUR OWN RESPONSIBILITY!!!
