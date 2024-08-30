@@ -1,6 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; Enable Legacy Volume Slider
-
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\MTCUVC]
-"EnableMtcUvc"=dword:00000000
