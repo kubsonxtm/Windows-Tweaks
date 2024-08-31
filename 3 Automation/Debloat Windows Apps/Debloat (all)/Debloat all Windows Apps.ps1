@@ -1,4 +1,4 @@
-# List of apps to uninstall
+# LIST OF APPS
 $apps = @(
     "Microsoft.Microsoft3DViewer",
     "Microsoft.AppConnector",
@@ -56,10 +56,8 @@ $apps = @(
     "Microsoft.MSPaint",
     "Microsoft.VP9VideoExtensions",
     "Microsoft.WebMediaExtensions",
-    "Microsoft.WebpImageExtensions",
-    "Microsoft.HEIFImageExtensions",
     "Microsoft.Windows.Photos",
-    "Microsoft.Windows.ParentalControls"
+    "Microsoft.Windows.ParentalControls",
     "*EclipseManager*",
     "*ActiproSoftwareLLC*",
     "*AdobeSystemsIncorporated.AdobePhotoshopExpress*",
@@ -88,6 +86,23 @@ $apps = @(
     "*Microsoft.Advertising.Xaml*"
 )
 
+# REMOVING
 foreach ($app in $apps) {
     Get-AppxPackage -Name $app | Remove-AppxPackage -ErrorAction SilentlyContinue
 }
+
+# RUN AS ADMIN
+function Run-AsAdmin {
+    param(
+        [string]$cmd
+    )
+    Start-Process powershell -ArgumentList "-Command $cmd" -Verb RunAs
+}
+
+# RUN TWO COMMANDS AT ONCE
+$commands = @"
+Get-AppxPackage *Microsoft.WebpImageExtension* -AllUsers | Remove-AppxPackage -AllUsers;
+Get-AppxPackage *HEIFImageExtension* -AllUsers | Remove-AppxPackage -AllUsers;
+"@
+
+Run-AsAdmin $commands
