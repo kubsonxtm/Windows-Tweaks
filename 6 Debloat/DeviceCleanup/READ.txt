@@ -1,1 +1,0 @@
-Clean all unnecessary devices, ctrl a, Remove Device
