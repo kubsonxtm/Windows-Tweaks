@@ -1,4 +1,4 @@
-# List of apps to uninstall
+# LIST OF APPS
 $apps = @(
     "Microsoft.Microsoft3DViewer",
     "Microsoft.AppConnector",
