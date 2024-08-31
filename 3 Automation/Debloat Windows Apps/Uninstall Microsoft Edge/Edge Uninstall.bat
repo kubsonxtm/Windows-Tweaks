@@ -1,19 +1,21 @@
 @echo off
-:: Check if the script is run as administrator
-openfiles >nul 2>&1
+net session >nul 2>&1
 if '%errorlevel%' == '0' goto :admin
 
-echo Running the script as administrator...
-powershell -Command "Start-Process cmd -ArgumentList '/c %~f0' -Verb RunAs"
+echo Run as Admin
+pause
 exit /b
 
 :admin
 echo Edge was found!
-echo Edge Closing...
+echo Closing Edge...
 taskkill /f /t /im msedge.exe > nul
 taskkill /f /t /im MicrosoftEdgeUpdate.exe > nul
 taskkill /f /t /im msedgewebview2.exe > nul
+
 echo Uninstalling Edge...
+
+:: Delete Edge registry keys
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f > nul
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" /f > nul
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView" /f > nul
@@ -21,14 +23,22 @@ reg delete "HKLM\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate" /f > nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}" /f > nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}" /f > nul
+reg delete "HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe" /f > nul
+reg delete "HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe" /f > nul
+
+:: Delete Edge scheduled tasks
 schtasks /delete /tn "MicrosoftEdgeUpdateTaskMachineUA" /f > nul 2>&1
 schtasks /delete /tn "MicrosoftEdgeUpdateTaskMachineCore" /f > nul 2>&1
+
+:: Stop and delete Edge services
 net stop MicrosoftEdgeElevationService > nul
 sc delete MicrosoftEdgeElevationService > nul
 net stop edgeupdate > nul
 sc delete edgeupdate > nul
 net stop edgeupdatem > nul
 sc delete edgeupdatem > nul
+
+:: Remove Edge-related directories and shortcuts
 rd /s /q "%ProgramData%\Microsoft\EdgeUpdate" > nul
 rd /s /q "%ProgramFiles(x86)%\Microsoft\Edge" > nul
 rd /s /q "%ProgramFiles(x86)%\Microsoft\EdgeCore" > nul
@@ -43,14 +53,14 @@ del /f /q "%appdata%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBa
 reg add "HKLM\Software\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f
 
+:: Remove Edge-related tasks
 for /f "delims=" %%f in ('dir /s /b %SystemRoot%\System32\Tasks\*MicrosoftEdge*') do (
     takeown /f "%%f"
     icacls "%%f" /grant everyone:F
     del /f /q "%%f"
 )
 
-for /f "delims=" %%a in ('powershell "(New-Object System.Security.Principal.NTAccount($env:USERNAME)).Translate([System.Security.Principal.SecurityIdentifier]).Value"') do set "USER_SID=%%a"
-
+:: Remove Edge AppxPackages
 for /f "delims=" %%a in ('powershell -NoProfile -Command "Get-AppxPackage -AllUsers | Where-Object { $_.PackageFullName -like '*microsoftedge*' } | Select-Object -ExpandProperty PackageFullName"') do (
     if not "%%a"=="" (
         set "APP=%%a"
@@ -62,25 +72,55 @@ for /f "delims=" %%a in ('powershell -NoProfile -Command "Get-AppxPackage -AllUs
     )
 )
 
+:: Remove SystemApps Microsoft Edge components
 for /f "delims=" %%f in ('dir /s /b %SystemRoot%\SystemApps\Microsoft.MicrosoftEdge*') do (
     takeown /f "%%f"
     icacls "%%f" /grant everyone:F
     del /f /q "%%f"
 )
 
+:: Remove System32 Microsoft Edge executables
 for /f "delims=" %%f in ('dir /s /b %SystemRoot%\System32\MicrosoftEdge*.exe') do (
     takeown /f "%%f"
     icacls "%%f" /grant everyone:F
     del /f /q "%%f"
 )
 
+:: Remove SysWOW64 Microsoft Edge executables
 for /f "delims=" %%f in ('dir /s /b %SystemRoot%\SysWOW64\MicrosoftEdge*.exe') do (
     takeown /f "%%f"
     icacls "%%f" /grant everyone:F
     del /f /q "%%f"
 )
 
-:: Remove files from System32
+:: Remove Microsoft Edge Stable folder regardless of version
+set "basePath=C:\Program Files\WindowsApps"
+set "pattern=Microsoft.MicrosoftEdge.Stable_*_neutral__*"
+
+for /d %%D in ("%basePath%\%pattern%") do (
+    set "folderPath=%%D"
+)
+
+if exist "%folderPath%" (
+    echo Folder Microsoft Edge Stable found: %folderPath%
+    echo Granting permissions and removing...
+
+    :: Grant permissions to the folder
+    takeown /f "%folderPath%" /r /d y > nul 2>&1
+    icacls "%folderPath%" /grant %username%:F /t > nul 2>&1
+
+    :: Remove the folder
+    rmdir /s /q "%folderPath%"
+    if %errorlevel% EQU 0 (
+        echo Folder Microsoft Edge Stable was successfully removed.
+    ) else (
+        echo There was a problem removing the Microsoft Edge Stable folder.
+    )
+) else (
+    echo Microsoft Edge Stable folder not found in %basePath%.
+)
+
+:: Remove remaining files in System32
 if exist "C:\Windows\System32\MicrosoftEdgeCP.exe" (
     for /f "delims=" %%a in ('dir /b "C:\Windows\System32\MicrosoftEdge*"') do (
         takeown /f "C:\Windows\System32\%%a" > NUL 2>&1
@@ -89,6 +129,7 @@ if exist "C:\Windows\System32\MicrosoftEdgeCP.exe" (
     )
 )
 
+:: Remove remaining registry entries
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet\Microsoft Edge" /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\RegisteredApplications" /v "Microsoft Edge" /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Clients\StartMenuInternet\Microsoft Edge" /f
