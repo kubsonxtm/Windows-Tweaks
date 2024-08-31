@@ -1,11 +1,4 @@
 @echo off
-:: Is Microsoft Edge is already uninstalled?
-if not exist "C:\Windows\System32\MicrosoftEdgeCP.exe" (
-    echo Microsoft Edge is already uninstalled.
-    pause
-    exit /b
-)
-
 :: Check if the script is run as administrator
 openfiles >nul 2>&1
 if '%errorlevel%' == '0' goto :admin
