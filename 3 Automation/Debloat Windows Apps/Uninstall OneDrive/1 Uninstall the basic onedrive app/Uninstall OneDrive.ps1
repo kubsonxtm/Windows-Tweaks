@@ -25,6 +25,8 @@ if ($uninstallCompleted) {
     Start-Process "explorer.exe"
     Write-Output "OneDrive has been successfully uninstalled."
 } else {
+    Write-Output "Restarting explorer"
+    Start-Process "explorer.exe"
     Write-Output "OneDrive was not found or was not uninstalled."
 }
 
