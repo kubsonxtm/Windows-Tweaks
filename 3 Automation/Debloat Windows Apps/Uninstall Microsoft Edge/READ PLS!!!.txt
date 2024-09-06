@@ -1,2 +1,2 @@
-1 First you need to run ExecTI.exe, click browse select Edge Uninstall.bat file and click OK, when everything is done and it says Microsoft Edge should be now uninstalled. Run the script again without ExecTI (you must disable ExecTI so the script doesn't detect it), run the bat script as admin. Done
+1 First you need to run ExecTI.exe, click browse select Edge Uninstall.bat file and click OK, when everything is done and it says Microsoft Edge should be now uninstalled. Run the script again without ExecTI, run the bat script as admin. Done
 2 I am not responsible for any damages
