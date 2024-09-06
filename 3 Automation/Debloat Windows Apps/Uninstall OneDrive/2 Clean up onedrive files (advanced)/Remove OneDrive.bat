@@ -1,29 +1,26 @@
 @echo off
+setlocal enabledelayedexpansion
 
-:input
-color 0C
-cls
-echo This will remove OneDrive from the computer, it also removes the system files associated with OneDrive.
-echo Proceed with caution. Type "YES" to continue or "NO" to exit.
-echo.
+echo Checking for ExecTI process...
+tasklist /FI "IMAGENAME eq ExecTI.exe" | find /I "ExecTI.exe" >nul 2>&1
 
-set /p user_input=Enter your choice (YES/NO): 
-
-if /I "%user_input%"=="YES" (
-    echo Proceeding with the script...
-    goto continue
-) else if /I "%user_input%"=="NO" (
-    echo Exiting script...
-    color 07
-    exit /b
+if '%errorlevel%' == '0' (
+    echo ExecTI detected. Running full cleanup...
+    goto :fullCleanup
 ) else (
-    echo Invalid input. Please enter YES or NO.
-    goto input
+    echo ExecTI not detected. Removing OneDrive folder in Admin mode...
+    goto :runAsAdmin
 )
 
-:continue
-color 07
-cls
+:runAsAdmin
+:: Ensure script runs in Administrator mode for the OneDrive removal operation
+echo Removing the OneDrive folder from a Microsoft location
+rd /s /q "%localappdata%\Microsoft\OneDrive"
+pause
+exit /b
+
+:fullCleanup
+echo Proceeding with full OneDrive cleanup...
 
 echo Cleaning OneDrive folders
 rd /s /q "%localappdata%\Microsoft\OneDrive"
@@ -60,8 +57,9 @@ del /f /q "C:\Windows\SysWOW64\OneDrive.ico"
 del /f /q "C:\Windows\SysWOW64\OneDriveSettingSyncProvider.dll"
 del /f /q "C:\Windows\System32\OneDriveSettingSyncProvider.dll"
 
-echo Removing the OneDrive folder from a Microsoft location
-start cmd /c "rd /s /q "%localappdata%\Microsoft\OneDrive""
+taskkill /f /im ExecTI.exe >nul 2>&1
+
+echo Run bat again but as admin (without ExecTI)
 
 pause
 exit /b
