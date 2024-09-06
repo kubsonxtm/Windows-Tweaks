@@ -169,6 +169,10 @@ reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Edge" /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\EdgeIntegration" /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Internet Explorer\EdgeIntegration" /f
 
+echo Closing ExecTI process...
+taskkill /f /t /im ExecTI.exe > nul 2>&1
+
 echo Microsoft Edge should be now uninstalled.
+
 pause
 exit /b
