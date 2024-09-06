@@ -1,3 +1,2 @@
-1. Run with ExecTI --> Browse, select the Remove OneDrive.bat file, OK
-2. This removes OneDrive files from the System and Registry so I am not responsible for unwanted changes
-3. Don't use if you don't know what it changes
+1 First you need to run ExecTI.exe, click browse select Remove OneDrive.bat file and click OK, when everything is done, run the script again without ExecTI, run the bat script as admin. Done
+2 I am not responsible for any damages
