@@ -1,19 +1,38 @@
 @echo off
-net session >nul 2>&1
-if '%errorlevel%' == '0' goto :admin
+setlocal enabledelayedexpansion
 
-echo Run as Admin
+echo Checking for ExecTI process...
+tasklist /FI "IMAGENAME eq ExecTI.exe" | find /I "ExecTI.exe" >nul 2>&1
+
+if '%errorlevel%' == '0' (
+    echo ExecTI detected. Running full cleanup...
+    goto :fullCleanup
+) else (
+    echo ExecTI not detected. Removing autostart entries only...
+    goto :removeAutostart
+)
+
+:removeAutostart
+echo Removing Edge autostart entries...
+powershell -NoProfile -Command ^
+    "$registryPath = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run';" ^
+    "$entries = Get-ItemProperty -Path $registryPath;" ^
+    "foreach ($entry in $entries.PSObject.Properties) {" ^
+    "    if ($entry.Name -like 'MicrosoftEdgeAutoLaunch_*') {" ^
+    "        Remove-ItemProperty -Path $registryPath -Name $entry.Name;" ^
+    "        Write-Output ('Removed entry ' + $entry.Name + ' from registry.');" ^
+    "    }" ^
+    "}" ^
+    "Write-Output 'Finished removing autostart entries'"
+
 pause
 exit /b
 
-:admin
-echo Edge was found!
+:fullCleanup
 echo Closing Edge...
 taskkill /f /t /im msedge.exe > nul
 taskkill /f /t /im MicrosoftEdgeUpdate.exe > nul
 taskkill /f /t /im msedgewebview2.exe > nul
-
-echo Uninstalling Edge...
 
 :: Delete Edge registry keys
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f > nul
@@ -151,6 +170,5 @@ reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\EdgeIntegrat
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Internet Explorer\EdgeIntegration" /f
 
 echo Microsoft Edge should be now uninstalled.
-echo Please reboot Windows.
 pause
-goto :eof
+exit /b
