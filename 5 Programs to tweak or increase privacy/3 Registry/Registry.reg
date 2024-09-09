@@ -925,7 +925,3 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice]
 "Start"=dword:00000004
-
-[HKEY_CURRENT_USER\Control Panel\International\User Profile]
-"HttpAcceptLanguageOptOut"=dword:00000001
-
