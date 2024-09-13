@@ -1,0 +1,11 @@
+Not Removed:
+Windows Calculator - https://apps.microsoft.com/detail/9wzdncrfhvn5
+Windows Photos - https://apps.microsoft.com/detail/9wzdncrfjbh4
+Windows Movies & TV - https://apps.microsoft.com/detail/9wzdncrfj3p2
+Windows Screen Sketch - https://apps.microsoft.com/detail/9mz95kl8mr0l
+--------------------------------------------------------------------------
+Scripts Works similar to this:
+
+"3 Automation/Debloat Windows Apps/Debloat (keep some apps)/Debloat Windows Apps but keep daily use.ps1"
+
+But this script also removes files and other things associated with the uninstalled applications
