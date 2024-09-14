@@ -18,5 +18,5 @@
     <img src="https://www.trustradius.com/_next/image?url=https%3A%2F%2Fmedia.trustradius.com%2Fproduct-logos%2FqZ%2FAJ%2FRAT0RK7MQK2V-180x180.PNG&w=128&q=75" alt="VirusTotal" style="width: 100px; height: auto;">
   </a>
   <br>
-  <img src="https://github.com/kubsonxtm/website/blob/main/scan.png?raw=true" alt="Scan Count" style="width: 40px; height: auto; max-width: 100px; max-height: 100px; margin-top: 0;">
+  <img src="https://github.com/kubsonxtm/website/blob/main/files/Windows-Tweaks/scan.png?raw=true" alt="Scan Count" style="width: 40px; height: auto; max-width: 100px; max-height: 100px; margin-top: 0;">
 </div>
