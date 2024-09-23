@@ -1,6 +1,7 @@
 EN
 Applications that are not uninstalled are:
 Windows Photos
+Windows Media Player
 Screen Sketch
 Movies and Tv
 Calculator
@@ -8,6 +9,7 @@ Calculator
 PL
 Aplikacje, które nie są odinstalowane to:
 Zdjęcia Windows
+Odtwarzacz multimedialny
 Szkic ekranu
 Filmy i Tv
 Kalkulator
