@@ -109,8 +109,6 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components]
 
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
-
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 "MicrosoftEdgeAutoLaunch_E9C49D8E9BDC4095F482C844743B9E82"=- 
 "MicrosoftEdgeAutoLaunch_D3AB3F7FBB44621987441AECEC1156AD"=- 
