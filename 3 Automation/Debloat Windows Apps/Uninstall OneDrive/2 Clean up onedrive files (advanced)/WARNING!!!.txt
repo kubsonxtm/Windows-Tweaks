@@ -1,2 +1,0 @@
-1 First you need to run ExecTI.exe, click browse select Remove OneDrive.bat file and click OK, when everything is done, run the script again without ExecTI, run the bat script as admin. Done
-2 I am not responsible for any damages
