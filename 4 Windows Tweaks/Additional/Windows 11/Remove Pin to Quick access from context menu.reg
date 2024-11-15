@@ -1,0 +1,10 @@
+﻿Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\pintohome]
+
+[-HKEY_CLASSES_ROOT\Drive\shell\pintohome]
+
+[-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
+
+[-HKEY_CLASSES_ROOT\Network\shell\pintohome]
+
