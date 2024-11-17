@@ -1,1 +1,1 @@
-Clean all unnecessary devices, ctrl a, Remove Device
+Clean all unnecessary devices, run as admin, ctrl a, Remove Device
