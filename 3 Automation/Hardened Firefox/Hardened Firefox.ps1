@@ -1,6 +1,6 @@
 # Define URLs and paths
 $userJsUrl = "https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js"
-$ublockXpiUrl = "https://github.com/gorhill/uBlock/releases/download/1.61.2/uBlock0_1.61.2.firefox.xpi"
+$ublockXpiUrl = "https://github.com/gorhill/uBlock/releases/download/1.61.0/uBlock0_1.61.0.firefox.signed.xpi"
 $downloadFolder = [System.IO.Path]::GetTempPath()
 $ublockXpiPath = Join-Path -Path $downloadFolder -ChildPath "ublock_origin.xpi"
 $firefoxExePath = "C:\Program Files\Mozilla Firefox\firefox.exe"
