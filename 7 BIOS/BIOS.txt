@@ -1,4 +1,4 @@
-Settings
+Settings  option-mode-description
 XMP --> ON - Allows you to overclock the RAM frequency
 Armoury Crate install --> False - ASUS bloatware (my opinion)
 Erp --> S5 - will turn off power to all ports when the computer is off
