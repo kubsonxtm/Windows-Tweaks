@@ -4,3 +4,5 @@ Armoury Crate install --> False - ASUS bloatware (my opinion)
 Erp --> S5 - will turn off power to all ports when the computer is off
 C-states --> Off - The processor does not go into power-saving modes, which means it always runs at full power, even when not under load.
 Intel(VMX) Virtualization --> Off - allows you to run virtual machines (VMs) with full access to CPU resources
+Legacy USB Support - enables older USB devices to work before the OS loads, useful for BIOS access and older operating systems.
+
