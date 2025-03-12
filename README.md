@@ -5,6 +5,11 @@
 </p>
 
 <p align="center" style="margin-top: 0; margin-bottom: 0;">
+  <strong>About:</strong><br>
+  This is a collection of programs, registry tweaks, and commands that I have used over the years. They have helped me reduce latency in games and minimize performance drops.
+</p>
+
+<p align="center" style="margin-top: 0; margin-bottom: 0;">
   <strong>Requirements:</strong><br>
   - Internet access<br>
   - Clean Windows 10/11 Pro <br>
@@ -20,3 +25,7 @@
   <br>
   <img src="https://github.com/kubsonxtm/website/blob/main/files/Windows-Tweaks/scan.png?raw=true" alt="Scan Count" style="width: 40px; height: auto; max-width: 100px; max-height: 100px; margin-top: 0;">
 </div>
+
+<p align="center">
+  <strong>Note:</strong> All programs used in this package are open-source. Therefore, some detections on VirusTotal may be false positives.
+</p>
