@@ -1,2 +1,2 @@
-EN click on tweaks tab and then recommended selection: standard, and click run tweaks
-PL kliknij w zakładke tweaks a nastepnie recommended selection: standard, i kliknij run tweaks
+EN click on tweaks tab and then recommended selection: standard or import my settings, and click run tweaks
+PL kliknij w zakładke tweaks a nastepnie recommended selection: standard lub importuj moje ustawienia, i kliknij run tweaks
