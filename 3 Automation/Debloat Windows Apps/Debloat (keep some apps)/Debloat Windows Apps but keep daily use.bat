@@ -881,4 +881,6 @@ pause
 :: Restore previous environment settings
 endlocal
 :: Exit the script successfully
-exit /b 0
+echo Script completed. Closing in 3 seconds...
+timeout /t 3 /nobreak >nul
+exit
