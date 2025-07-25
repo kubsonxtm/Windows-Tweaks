@@ -876,8 +876,6 @@ PowerShell -ExecutionPolicy Unrestricted -Command "$pathGlobPattern = "^""%PROGR
 :: ----------------------------------------------------------
 
 
-:: Pause the script to view the final state
-pause
 :: Restore previous environment settings
 endlocal
 :: Exit the script successfully
