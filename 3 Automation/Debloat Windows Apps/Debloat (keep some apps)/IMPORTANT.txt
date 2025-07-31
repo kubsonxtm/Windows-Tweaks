@@ -2,8 +2,10 @@ EN
 Applications that are not uninstalled are:
 Windows Photos
 Screen Sketch
+Windows Media Player
 
 PL
 Aplikacje, które nie są odinstalowane to:
 Zdjęcia Windows
 Szkic ekranu
+Odtwarzacz Multimedialny
