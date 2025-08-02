@@ -1,4 +1,4 @@
-# All credits to ChrisTitusTech https://github.com/ChrisTitusTech/winutil
+# All credits to ChrisTitusTech https://github.com/ChrisTitusTech/winutil 
 $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 if (-not $isAdmin) {
@@ -641,3 +641,4 @@ Write-Host "All tweaks applied successfully!" -ForegroundColor Green
 Write-Host "Press any key to exit..." -ForegroundColor Yellow
 
 $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
