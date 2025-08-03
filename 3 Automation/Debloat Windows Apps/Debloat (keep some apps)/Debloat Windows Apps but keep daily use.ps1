@@ -173,8 +173,10 @@ Function Remove-Bloatware {
     Start-Process explorer.exe
 
     Write-Host "`nDEBOLOAT COMPLETED!" -ForegroundColor Green
-    Write-Host "Press any key to exit..."
-    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+    Write-Host "Closing in 3 seconds..."
+    Start-Sleep -Seconds 3
+    exit
 }
 
 Remove-Bloatware
+
