@@ -214,7 +214,6 @@ if (Test-Path $regPath) {
     Start-Process -FilePath $OneDriveExe -ArgumentList "$OneDriveArgs /silent" -NoNewWindow -Wait
 } else {
     Write-Host "Onedrive doesn't seem to be installed anymore" -ForegroundColor Red
-    return
 }
 # Check if OneDrive got Uninstalled
 if (-not (Test-Path $regPath)) {
@@ -641,6 +640,7 @@ Write-Host "All tweaks applied successfully!" -ForegroundColor Green
 Write-Host "Closing in 3 seconds..."
 Start-Sleep -Seconds 3
 exit
+
 
 
 
