@@ -638,7 +638,10 @@ foreach ($setting in $serviceSettings) {
 
 
 Write-Host "All tweaks applied successfully!" -ForegroundColor Green
-Write-Host "Press any key to exit..." -ForegroundColor Yellow
+Write-Host "Closing in 3 seconds..."
+Start-Sleep -Seconds 3
+exit
 
-$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+
 
