@@ -29,7 +29,6 @@ Write-Host "Consumer features disabled!" -ForegroundColor Green
 
 
 Write-Host "Disabling Telemetry..." -ForegroundColor White
-bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
 
 If ((Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild).CurrentBuild -lt 22557) {
     $taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
@@ -640,6 +639,7 @@ Write-Host "All tweaks applied successfully!" -ForegroundColor Green
 Write-Host "Closing in 3 seconds..."
 Start-Sleep -Seconds 3
 exit
+
 
 
 
