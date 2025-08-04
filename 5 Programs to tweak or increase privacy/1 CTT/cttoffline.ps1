@@ -126,7 +126,7 @@ Write-Host "Disabling Recall..." -ForegroundColor White
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name "WindowsAI" -Force | Out-Null
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" -Name "DisableAIDataAnalysis" -Type DWord -Value 1
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" -Name "AllowRecallEnablement" -Type DWord -Value 0
-DISM /Online /Disable-Feature /FeatureName:Recall
+DISM /Online /Disable-Feature /FeatureName:Recall /Quiet /NoRestart
 Write-Host "Recall disabled!" -ForegroundColor Green
 
 
@@ -639,6 +639,7 @@ Write-Host "All tweaks applied successfully!" -ForegroundColor Green
 Write-Host "Closing in 3 seconds..."
 Start-Sleep -Seconds 3
 exit
+
 
 
 
