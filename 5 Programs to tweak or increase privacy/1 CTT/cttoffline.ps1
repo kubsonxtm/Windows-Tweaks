@@ -639,12 +639,3 @@ Write-Host "All tweaks applied successfully!" -ForegroundColor Green
 Write-Host "Closing in 3 seconds..."
 Start-Sleep -Seconds 3
 exit
-
-
-
-
-
-
-
-
-
