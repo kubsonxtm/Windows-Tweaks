@@ -193,6 +193,9 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-353698Enabled"=dword:00000000
 "SubscribedContentEnabled"=dword:00000000
 "SystemPaneSuggestionsEnabled"=dword:00000000
+"RemediationRequired"=dword:00000000
+"SubscribedContent-338387Enabled"=dword:00000000
+"SubscribedContent-314559Enabled"=dword:00000000
 
 
 
@@ -786,27 +789,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-"ContentDeliveryAllowed"=dword:00000000
-"FeatureManagementEnabled"=dword:00000000
-"OemPreInstalledAppsEnabled"=dword:00000000
-"PreInstalledAppsEnabled"=dword:00000000
-"PreInstalledAppsEverEnabled"=dword:00000000
-"RemediationRequired"=dword:00000000
-"SilentInstalledAppsEnabled"=dword:00000000
-"SoftLandingEnabled"=dword:00000000
-"SystemPaneSuggestionsEnabled"=dword:00000000
-"SubscribedContent-310093Enabled"=dword:00000000
-"SubscribedContent-338388Enabled"=dword:00000000
-"SubscribedContent-338389Enabled"=dword:00000000
-"SubscribedContent-353698Enabled"=dword:00000000
-"SubscribedContent-338387Enabled"=dword:00000000
-"SubscribedContent-338393Enabled"=dword:00000000
-"SubscribedContent-353694Enabled"=dword:00000000
-"SubscribedContent-353696Enabled"=dword:00000000
-"SubscribedContent-314563Enabled"=dword:00000000
-"SubscribedContent-314559Enabled"=dword:00000000
-
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
 "ScoobeSystemSettingEnabled"=dword:00000000
 
@@ -914,3 +896,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice]
 "Start"=dword:00000004
+
