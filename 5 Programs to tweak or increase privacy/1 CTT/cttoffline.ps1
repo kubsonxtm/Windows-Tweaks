@@ -17,11 +17,6 @@ if (-not $isAdmin) {
 
 Write-Host "Chris Titus Offline" -ForegroundColor Red
 
-Write-Host "Delete Temporary Files" -ForegroundColor White
-Get-ChildItem -Path "C:\Windows\Temp" -Recurse -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-Get-ChildItem -Path $env:TEMP -Recurse -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-Write-Host "Temporary files cleanup completed!" -ForegroundColor Green
-
 Write-Host "Disabling Consumer Features..." -ForegroundColor White
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name "CloudContent" -Force | Out-Null
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Value 1 -Type DWord
@@ -639,3 +634,4 @@ Write-Host "All tweaks applied successfully!" -ForegroundColor Green
 Write-Host "Closing in 3 seconds..."
 Start-Sleep -Seconds 3
 exit
+
