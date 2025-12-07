@@ -23,6 +23,8 @@ $shutupExePath = "$tempDir\ooshutup10.exe"
 $cfgPath = "$tempDir\O&O_ShutUp_settings.cfg"
 $modifiedCfgPath = "$tempDir\O&O_ShutUp_settings_modified.cfg"
 
+$webClient = New-Object System.Net.WebClient
+
 # Create temp directory
 if (-not (Test-Path $tempDir)) {
     New-Item -ItemType Directory -Path $tempDir | Out-Null
@@ -31,15 +33,16 @@ if (-not (Test-Path $tempDir)) {
 # Download O&O ShutUp10
 Write-Host "Downloading O&O ShutUp10..."
 try {
-    Invoke-WebRequest -Uri $shutupUrl -OutFile $shutupExePath -ErrorAction Stop
+    $webClient.DownloadFile($shutupUrl, $shutupExePath)
 }
 catch {
     Write-Host "Error downloading O&O ShutUp10: $_" -ForegroundColor Red
     exit 1
 }
 
+# Download and configure CFG file
 try {
-    Invoke-WebRequest -Uri $cfgUrl -OutFile $cfgPath -ErrorAction Stop
+    $webClient.DownloadFile($cfgUrl, $cfgPath)
     
     $cfgContent = Get-Content -Path $cfgPath -Raw
     
