@@ -19,11 +19,10 @@
 <div align="center" style="margin: 0; padding: 0;">
   <span style="color: #007bff;"><strong>VirusTotal</strong></span>
   <br>
-  <a href="https://www.virustotal.com/gui/file/4b2d66c59cee4a8e774a5bdf462853b8f8b09d8760b8ef47fe5ab0b3e22ba2d3" target="_blank">
+  <a href="https://www.virustotal.com/gui/file/8661a8ab703e804890948a48f204ab8e4aa450e8cea8384599a5a387d67e4175" target="_blank">
     <img src="https://www.trustradius.com/_next/image?url=https%3A%2F%2Fmedia.trustradius.com%2Fproduct-logos%2FqZ%2FAJ%2FRAT0RK7MQK2V-180x180.PNG&w=128&q=75" alt="VirusTotal" style="width: 100px; height: auto;">
   </a>
   <br>
-  <img src="https://github.com/kubsonxtm/website/blob/main/files/Windows-Tweaks/scan.png?raw=true" alt="Scan Count" style="width: 40px; height: auto; max-width: 100px; max-height: 100px; margin-top: 0;">
 </div>
 
 <p align="center">
