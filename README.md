@@ -16,15 +16,12 @@
   - Run every tweak as admin (if possible)
 </p>
 
-<div align="center" style="margin: 0; padding: 0;">
+<div align="center">
   <span style="color: #007bff;"><strong>VirusTotal</strong></span>
   <br>
-  <a href="https://www.virustotal.com/gui/file/8661a8ab703e804890948a48f204ab8e4aa450e8cea8384599a5a387d67e4175" 
-    <img src="https://www.trustradius.com/_next/image?url=https%3A%2F%2Fmedia.trustradius.com%2Fproduct-logos%2FqZ%2FAJ%2FRAT0RK7MQK2V-180x180.PNG&w=128&q=75" 
-         alt="VirusTotal" 
-         style="width: 100px; height: auto; cursor: pointer;">
+  <a href="https://www.virustotal.com/gui/file/8661a8ab703e804890948a48f204ab8e4aa450e8cea8384599a5a387d67e4175" target="_blank" rel="noopener noreferrer">
+    <img src="https://media.trustradius.com/product-logos/qZ/AJ/RAT0RK7MQK2V-180x180.PNG" width="100" alt="VirusTotal">
   </a>
-  <br>
 </div>
 
 <p align="center">
