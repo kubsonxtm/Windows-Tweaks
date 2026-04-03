@@ -3,98 +3,72 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     Exit
 }
 
-$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + " (Administrator)"
+$Host.UI.RawUI.WindowTitle = "Visual C++ Installer"
 $Host.UI.RawUI.BackgroundColor = "Black"
-$Host.PrivateData.ProgressBackgroundColor = "Black"
-$Host.PrivateData.ProgressForegroundColor = "White"
 Clear-Host
 
 function Get-FileFromWeb {
-    param ([Parameter(Mandatory)][string]$URL, [Parameter(Mandatory)][string]$File)
+    param ([string]$URL, [string]$File)
+    
+    $processName = [System.IO.Path]::GetFileNameWithoutExtension($File)
+    Get-Process $processName -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+    [System.GC]::Collect()
+    [System.GC]::WaitForPendingFinalizers()
 
     function Show-Progress {
-        param (
-            [Parameter(Mandatory)][Single]$TotalValue, 
-            [Parameter(Mandatory)][Single]$CurrentValue, 
-            [Parameter(Mandatory)][string]$ProgressText, 
-            [Parameter()][int]$BarSize = 10
-        )
-        
+        param ($TotalValue, $CurrentValue, $ProgressText)
         $percent = $CurrentValue / $TotalValue
         $percentComplete = $percent * 100
-        if ($psISE) { 
-            Write-Progress "$ProgressText" -id 0 -percentComplete $percentComplete 
-        } else { 
-            Write-Host -NoNewLine "`r$ProgressText $(''.PadRight($BarSize * $percent, [char]9608).PadRight($BarSize, [char]9617)) $($percentComplete.ToString('##0.00').PadLeft(6)) % " 
-        }
+        Write-Host -NoNewLine "`r$ProgressText $(''.PadRight(10 * $percent, [char]9608).PadRight(10, [char]9617)) $($percentComplete.ToString('##0.00').PadLeft(6)) % " 
     }
 
     try {
         $request = [System.Net.HttpWebRequest]::Create($URL)
         $response = $request.GetResponse()
-        if ($response.StatusCode -eq 401 -or $response.StatusCode -eq 403 -or $response.StatusCode -eq 404) {
-            throw "Remote file either doesn't exist, is unauthorized, or is forbidden for '$URL'."
-        }
         [long]$fullSize = $response.ContentLength
         [byte[]]$buffer = new-object byte[] 1048576
-        [long]$total = [long]$count = 0
+        [long]$total = 0
         $reader = $response.GetResponseStream()
-        $writer = new-object System.IO.FileStream $File, 'Create'
+        $writer = new-object System.IO.FileStream $File, 'Create', 'Write', 'None'
         do {
             $count = $reader.Read($buffer, 0, $buffer.Length)
             $writer.Write($buffer, 0, $count)
             $total += $count
-            if ($fullSize -gt 0) { Show-Progress -TotalValue $fullSize -CurrentValue $total -ProgressText " $($File.Name)" }
+            if ($fullSize -gt 0) { Show-Progress -TotalValue $fullSize -CurrentValue $total -ProgressText " Downloading..." }
         } while ($count -gt 0)
-    }
-    finally {
-        $reader.Close()
-        $writer.Close()
+        Write-Host "" 
+    } finally {
+        if ($writer) { $writer.Close(); $writer.Dispose() }
+        if ($reader) { $reader.Close(); $reader.Dispose() }
     }
 }
 
 function Is-VCRedistInstalled {
-    param (
-        [string]$version
-    )
-
+    param ([string]$version)
     if ($version -eq "2015_2017_2019_2022") {
-        $x86Key = "HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x86"
-        $x64Key = "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
-
-        $x86Installed = Test-Path $x86Key
-        $x64Installed = Test-Path $x64Key
-
-        if ($x86Installed -and $x64Installed) {
-            return $true
-        } else {
-            return $false
-        }
+        return (Test-Path "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64")
     } else {
-        $installedApps = Get-WmiObject -Class Win32_Product | Where-Object {
-            $_.Name -like "*Visual C++*" -and $_.Name -like "*$version*"
-        }
-
-        return $installedApps -ne $null
+        $searchName = "*Visual C++*$version*"
+        return (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName -like $searchName }) -ne $null
     }
 }
 
 function Install-VCRedist {
-    param (
-        [string]$urlX86,
-        [string]$urlX64,
-        [string]$name
-    )
+    param ($urlX86, $urlX64, $name)
+    Write-Host "Updating Visual C++ ${name}..." -ForegroundColor Cyan
+    
+    $args = if ($name -eq "2005" -or $name -eq "2008") { "/q" } else { "/install", "/quiet", "/norestart" }
+    
+    $fileX86 = "$env:TEMP\vcredist_${name}_x86.exe"
+    $fileX64 = "$env:TEMP\vcredist_${name}_x64.exe"
 
-    Write-Host "Downloading and installing Visual C++ Redistributable $name..."
+    Get-FileFromWeb -URL $urlX86 -File $fileX86
+    Start-Process -Wait -FilePath $fileX86 -ArgumentList $args
     
-    Get-FileFromWeb -URL $urlX86 -File "$env:TEMP\vcredist_${name}_x86.exe"
-    Start-Process -wait "$env:TEMP\vcredist_${name}_x86.exe" -ArgumentList "/q"
+    Get-FileFromWeb -URL $urlX64 -File $fileX64
+    Start-Process -Wait -FilePath $fileX64 -ArgumentList $args
     
-    Get-FileFromWeb -URL $urlX64 -File "$env:TEMP\vcredist_${name}_x64.exe"
-    Start-Process -wait "$env:TEMP\vcredist_${name}_x64.exe" -ArgumentList "/q"
-    
-    Write-Host "Installation successful for Visual C++ Redistributable $name."
+    Write-Host "Visual C++ ${name}: INSTALLED" -ForegroundColor Green
 }
 
 $vcredistList = @(
@@ -106,39 +80,19 @@ $vcredistList = @(
     @{version = "2015_2017_2019_2022"; urlX86 = "https://aka.ms/vs/17/release/vc_redist.x86.exe"; urlX64 = "https://aka.ms/vs/17/release/vc_redist.x64.exe"}
 )
 
-$installNeeded = $false
 foreach ($vcredist in $vcredistList) {
     if (Is-VCRedistInstalled $vcredist.version) {
-        Write-Host "Visual C++ Redistributable $($vcredist.version) is already installed."
+        Write-Host "Visual C++ $($vcredist.version): INSTALLED" -ForegroundColor Green
     } else {
-        Write-Host "Visual C++ Redistributable $($vcredist.version) is NOT installed. Downloading and installing..."
-        Install-VCRedist $vcredist.urlX86 $vcredist.urlX64 $vcredist.version
-        $installNeeded = $true
+        Install-VCRedist -urlX86 $vcredist.urlX86 -urlX64 $vcredist.urlX64 -name $vcredist.version
     }
 }
 
-Write-Host "`nAll checks completed. Select an option:"
-Write-Host "1. Reinstall all Visual C++ Redistributables anyway"
-Write-Host "2. Exit"
-$response = Read-Host "Enter your choice (1 or 2)"
+try { Remove-Item "$env:TEMP\vcredist_*" -Force -ErrorAction SilentlyContinue } catch {}
 
-if ($response -eq '1') {
-    foreach ($vcredist in $vcredistList) {
-        Install-VCRedist $vcredist.urlX86 $vcredist.urlX64 $vcredist.version
-    }
-    Write-Host "All Visual C++ Redistributables have been reinstalled."
-    Write-Host "Press any key to exit..."
-    [void][System.Console]::ReadKey($true)
-
-    try {
-        Remove-Item "$env:TEMP\vcredist_*" -Force -ErrorAction Stop
-    } catch {
-    }
-    
-} else {
-    try {
-        Remove-Item "$env:TEMP\vcredist_*" -Force -ErrorAction Stop
-    } catch {
-    }
-    Exit
+Write-Host "`nAll installed!" -ForegroundColor Green
+for ($i = 5; $i -gt 0; $i--) {
+    Write-Host -NoNewLine "`rClosing in $i... "
+    Start-Sleep -Seconds 1
 }
+Exit
