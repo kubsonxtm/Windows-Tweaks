@@ -1,7 +1,7 @@
 @echo off
 openfiles >nul 2>&1
 if %errorlevel% neq 0 (
-    echo run as admin
+    powershell -Command "Write-Host 'Run as admin' -ForegroundColor Red"
     pause
     exit /b
 )
@@ -12,5 +12,9 @@ reg add "HKLM\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" /v 
 
 powershell -Command "Get-ChildItem -Path '%~dp0' -Recurse | Unblock-File"
 
-echo you can continue running the scripts.
-pause
+powershell -Command "Write-Host 'You can continue running the scripts.' -ForegroundColor Green"
+powershell -Command "Write-Host 'Closing in 3 seconds...' -ForegroundColor Blue"
+
+timeout /t 3 >nul
+
+exit /b
