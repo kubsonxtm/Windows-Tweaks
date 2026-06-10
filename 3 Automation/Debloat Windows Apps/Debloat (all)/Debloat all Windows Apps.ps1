@@ -137,6 +137,9 @@ Function Remove-Bloatware {
         "Microsoft.VP9VideoExtensions"
 		"Microsoft.AV1VideoExtension"
 		"Microsoft.AVCEncoderVideoExtension"
+		"Microsoft.HEVCVideoExtension"
+		"Microsoft.MPEG2VideoExtension"
+		"Microsoft.RawImageExtension"
         "Microsoft.Wallet"
 		"MicrosoftCorporationII.WinAppRuntime.Main.1.8"
     )
