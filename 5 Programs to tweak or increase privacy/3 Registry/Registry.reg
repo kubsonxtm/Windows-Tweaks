@@ -428,6 +428,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Accessibility]
 "DynamicScrollbars"=dword:00000000
 
+; remove gallery from explorer
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}]
+@="Gallery"
+"HiddenByDefault"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\NonEnum]
+"{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}"=dword:00000001
+
 
 
 ; SERVICES
