@@ -133,6 +133,7 @@ Function Remove-Bloatware {
         "Microsoft.Edge.GameAssist"
         "Microsoft.VP9VideoExtensions"
         "Microsoft.Wallet"
+		"MicrosoftCorporationII.WinAppRuntime.Main.1.8"
     )
 
     foreach ($app in $Bloatware) {
