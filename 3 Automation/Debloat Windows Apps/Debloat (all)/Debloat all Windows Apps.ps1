@@ -135,6 +135,8 @@ Function Remove-Bloatware {
         "Microsoft.WebpImageExtension"
         "Microsoft.Edge.GameAssist"
         "Microsoft.VP9VideoExtensions"
+		"Microsoft.AV1VideoExtension"
+		"Microsoft.AVCEncoderVideoExtension"
         "Microsoft.Wallet"
 		"MicrosoftCorporationII.WinAppRuntime.Main.1.8"
     )
