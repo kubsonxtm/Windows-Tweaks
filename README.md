@@ -1,3 +1,14 @@
+<!-- Informacja o GUI na samej górze -->
+<div align="center">
+  <p>
+    <strong>✨ Now available: <a href="https://github.com/kubsonxtm/Windows-Tweaks-GUI">Windows Tweaks GUI</a></strong><br>
+    The easiest way to apply my tweaks. A clean interface for all the optimizations.
+  </p>
+</div>
+
+<hr>
+
+<!-- Twoja oryginalna zawartość -->
 <h1 align="center">🚀 Windows Tweaks 🚀</h1>
 
 <p align="center" style="margin-bottom: 0;">
