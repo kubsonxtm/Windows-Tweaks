@@ -97,7 +97,7 @@ Write-Host "Installing: Direct X . . ."
 Get-FileFromWeb -URL "https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe" -File "$env:TEMP\DirectX.exe"
 
 # Download 7-Zip
-Get-FileFromWeb -URL "https://www.7-zip.org/a/7z2301-x64.exe" -File "$env:TEMP\7-Zip.exe"
+Get-FileFromWeb -URL "https://github.com/ip7z/7zip/releases/download/26.04/7z2604-x64.exe" -File "$env:TEMP\7-Zip.exe"
 
 # Install 7-Zip
 Start-Process -wait "$env:TEMP\7-Zip.exe" /S
