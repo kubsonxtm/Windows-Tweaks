@@ -85,11 +85,12 @@ if (Check-DirectX) {
     
     if ($userChoice -eq [System.Windows.Forms.DialogResult]::No) {
         Write-Host "Installation cancelled by user."
-        Write-Host "Press any key to exit..."
-        [System.Console]::ReadKey() | Out-Null
+        for ($i = 3; $i -gt 0; $i--) {
+            Write-Host -NoNewLine "`rClosing in $i... "
+            Start-Sleep -Seconds 1
+        }
         Exit
     }
-}
 
 Write-Host "Installing: Direct X . . ."
 # Download DirectX
